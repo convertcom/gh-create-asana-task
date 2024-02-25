@@ -23,9 +23,9 @@ inputs:
   asana-tags:
     description: 'List of tag IDs to associate with Asana task'
     required: false
-  github-token: 
-    description: 'GitHub Token'
-    required: true
+  asana-section-id:
+    description: 'Section ID to add task to'
+    required: false
 outputs:
   outputName:
     description: 'Output Description'
