@@ -1,9 +1,30 @@
-name: 'Action Name'
-author: 'NickLiffen'
-description: 'Action Description'
+name: 'Create Asana Task'
+author: 'dev@convert.com'
+description: 'Create a new task in Asana'
 inputs:
-  inputName:
-    description: 'Input Description'
+  asana-secret: 
+    description: 'Asana Secret'
+    required: true
+  asana-workspace-id:
+    description: 'Asana Workspace ID'
+    required: true
+  asana-project-id:
+    description: 'Asana Project ID'
+    required: true
+  asana-task-name:
+    description: 'Name for Asana task'
+    required: true
+  asana-task-description:
+    description: 'Description for Asana task'
+    required: false
+  asana-due-date:
+    description: 'Date on which Asana task is due (YYYY-MM-DD)'
+    required: false
+  asana-tags:
+    description: 'List of tag IDs to associate with Asana task'
+    required: false
+  github-token: 
+    description: 'GitHub Token'
     required: true
 outputs:
   outputName:
