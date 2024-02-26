@@ -52402,7 +52402,7 @@ const run = async () => {
                 approval_status: "pending",
                 assignee_status: "upcoming",
                 completed: false,
-                html_notes: taskDescription,
+                notes: taskDescription,
                 is_rendered_as_separator: false,
                 liked: true,
                 projects: [projectId],
