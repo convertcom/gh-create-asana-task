@@ -27,8 +27,8 @@ inputs:
     description: 'Section ID to add task to'
     required: false
 outputs:
-  outputName:
-    description: 'Output Description'
+  task_url:
+    description: 'Url of the created task'
 runs:
   using: 'node20'
   main: 'dist/index.js'
