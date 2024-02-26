@@ -37,7 +37,7 @@ const run = async (): Promise<void> => {
       },
     };
     const opts = {};
-
+    tasksApiInstance.create();
     await tasksApiInstance.createTask(body, opts);
   } catch (error) {
     console.error(error);

@@ -52394,7 +52394,7 @@ const run = async () => {
         const taskName = core.getInput("asana-task-name", { required: true });
         const taskDescription = core.getInput("asana-task-description");
         const dueDate = core.getInput("asana-due-date");
-        const tags = core.getInput("asana-tags");
+        //const tags = core.getInput("asana-tags");
         const tasksApiInstance = new Asana.TasksApi();
         const body = {
             data: {
@@ -52408,7 +52408,7 @@ const run = async () => {
                 projects: [projectId],
                 due_on: dueDate,
                 workspace: workspaceId,
-                tags: tags ? JSON.parse(tags) : "",
+                //tags: tags ? JSON.parse(tags) : "",
             },
         };
         const opts = {};
