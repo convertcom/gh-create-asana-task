@@ -1,37 +1,46 @@
 import * as core from "@actions/core";
-import asana from "asana";
+
+import * as Asana from "asana";
 
 /* Edit Function */
 const run = async (): Promise<void> => {
   try {
-    const token = core.getInput("asana-secret", { required: true });
-    core.setSecret(token);
-    const client = asana.Client.create({
-      defaultHeaders: {
-        "asana-enable": "new_project_templates,new_user_task_lists",
-      },
-    }).useAccessToken(token);
+    const client = Asana.Client.create().useAccessToken(
+      core.getInput("asana-secret", { required: true }),
+    );
+
+    // const token = core.getInput("asana-secret", { required: true });
+    // core.setSecret(token);
+    // const client = asana.Client.create({
+    //   defaultHeaders: {
+    //     "asana-enable": "new_project_templates,new_user_task_lists",
+    //   },
+    // }).useAccessToken(token);
 
     const workspaceId = core.getInput("asana-workspace-id", { required: true });
     const projectId = core.getInput("asana-project-id", { required: true });
-    const sectionId = core.getInput("asana-section-id", { required: true });
+    //const sectionId = core.getInput("asana-section-id", { required: true });
     const taskName = core.getInput("asana-task-name", { required: true });
     const taskDescription = core.getInput("asana-task-description");
     const dueDate = core.getInput("asana-due-date");
     const tags = core.getInput("asana-tags");
 
-    //  const assignee = await getAssignee();
-
-    const result = await client.tasks.create({
-      workspace: workspaceId,
-      projects: [projectId],
-      memberships: [{ project: projectId, section: sectionId }],
+    const body = {
       name: taskName,
+      approval_status: "pending",
+      assignee_status: "upcoming",
+      completed: false,
       notes: taskDescription,
+      is_rendered_as_separator: false,
+      liked: true,
+      projects: [projectId],
       due_on: dueDate,
+      workspace: workspaceId,
       tags: tags ? JSON.parse(tags) : "",
-    });
-    console.log("CREATE RESULT", result);
+    };
+    const opts = {};
+
+    await client.tasks.create(body, opts);
   } catch (error) {
     console.error(error);
     if (error instanceof Error) core.setFailed(error.message);

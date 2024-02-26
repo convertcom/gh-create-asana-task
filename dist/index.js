@@ -52410,7 +52410,7 @@ const run = async () => {
             due_on: dueDate,
             tags: tags ? JSON.parse(tags) : "",
         });
-        console.log(result);
+        console.log("CREATE RESULT", result);
     }
     catch (error) {
         console.error(error);
