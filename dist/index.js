@@ -52412,7 +52412,6 @@ const run = async () => {
             },
         };
         const opts = {};
-        tasksApiInstance.create();
         await tasksApiInstance.createTask(body, opts);
     }
     catch (error) {
