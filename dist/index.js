@@ -52377,40 +52377,41 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
+// @ts-nocheck
 const core = __importStar(__nccwpck_require__(2186));
-const asana_1 = __importDefault(__nccwpck_require__(576));
+const Asana = __nccwpck_require__(576);
 /* Edit Function */
 const run = async () => {
     try {
-        const token = core.getInput("asana-secret", { required: true });
-        core.setSecret(token);
-        const client = asana_1.default.Client.create({
-            defaultHeaders: {
-                "asana-enable": "new_project_templates,new_user_task_lists",
-            },
-        }).useAccessToken(token);
+        const client = Asana.ApiClient.instance;
+        const token = client.authentications["token"];
+        token.accessToken = core.getInput("asana-secret", { required: true });
         const workspaceId = core.getInput("asana-workspace-id", { required: true });
         const projectId = core.getInput("asana-project-id", { required: true });
-        const sectionId = core.getInput("asana-section-id", { required: true });
+        //const sectionId = core.getInput("asana-section-id", { required: true });
         const taskName = core.getInput("asana-task-name", { required: true });
         const taskDescription = core.getInput("asana-task-description");
         const dueDate = core.getInput("asana-due-date");
         const tags = core.getInput("asana-tags");
-        //  const assignee = await getAssignee();
-        const result = await client.tasks.create({
-            workspace: workspaceId,
-            projects: [projectId],
-            memberships: [{ project: projectId, section: sectionId }],
-            name: taskName,
-            notes: taskDescription,
-            due_on: dueDate,
-            tags: tags ? JSON.parse(tags) : "",
-        });
-        console.log("CREATE RESULT", result);
+        const tasksApiInstance = new Asana.TasksApi();
+        const body = {
+            data: {
+                name: taskName,
+                approval_status: "pending",
+                assignee_status: "upcoming",
+                completed: false,
+                notes: taskDescription,
+                is_rendered_as_separator: false,
+                liked: true,
+                projects: [projectId],
+                due_on: dueDate,
+                workspace: workspaceId,
+                tags: tags ? JSON.parse(tags) : "",
+            },
+        };
+        const opts = {};
+        await tasksApiInstance.createTask(body, opts);
     }
     catch (error) {
         console.error(error);
