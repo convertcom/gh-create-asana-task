@@ -23,9 +23,6 @@ inputs:
   asana-tags:
     description: 'List of tag IDs to associate with Asana task'
     required: false
-  asana-section-id:
-    description: 'Section ID to add task to'
-    required: false
 outputs:
   task_url:
     description: 'Url of the created task'

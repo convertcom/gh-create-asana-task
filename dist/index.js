@@ -52390,7 +52390,6 @@ const run = async () => {
         token.accessToken = core.getInput("asana-secret", { required: true });
         const workspaceId = core.getInput("asana-workspace-id", { required: true });
         const projectId = core.getInput("asana-project-id", { required: true });
-        const sectionId = core.getInput("asana-section-id", { required: true });
         const taskName = core.getInput("asana-task-name", { required: true });
         const taskDescription = core.getInput("asana-task-description");
         const dueDate = core.getInput("asana-due-date");
@@ -52408,7 +52407,6 @@ const run = async () => {
                 projects: [projectId],
                 due_on: dueDate,
                 workspace: workspaceId,
-                assignee_section: sectionId,
                 //tags: tags ? JSON.parse(tags) : "",
             },
         };
