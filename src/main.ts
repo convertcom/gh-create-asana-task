@@ -40,7 +40,7 @@ const run = async (): Promise<void> => {
     const opts = {};
     const result = await tasksApiInstance.createTask(body, opts);
 
-    return result["data"]["permalink_url"];
+    core.setOutput("task_url", result["data"]["permalink_url"]);
   } catch (error) {
     console.error(error);
     if (error instanceof Error) core.setFailed(error.message);
