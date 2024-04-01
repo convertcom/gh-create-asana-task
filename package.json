@@ -22,16 +22,16 @@
     "@actions/github": "^6.0.0",
     "@octokit/action": "^6.0.7",
     "@vercel/ncc": "^0.38.1",
-    "asana": "^3.0.2"
+    "asana": "^3.0.4"
   },
   "devDependencies": {
-    "@tsconfig/node20": "^20.1.2",
+    "@tsconfig/node20": "^20.1.4",
     "@types/asana": "^0.18.16",
     "@types/jest": "^29.5.11",
     "@types/json-schema": "^7.0.15",
-    "@types/node": "^20.11.24",
-    "@typescript-eslint/eslint-plugin": "^7.1.0",
-    "@typescript-eslint/parser": "^7.1.0",
+    "@types/node": "^20.12.2",
+    "@typescript-eslint/eslint-plugin": "^7.4.0",
+    "@typescript-eslint/parser": "^7.4.0",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-jest": "^27.6.3",
@@ -42,7 +42,7 @@
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
     "tslib": "^2.6.2",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.3"
   },
   "engines": {
     "node": "20"
