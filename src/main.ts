@@ -35,6 +35,7 @@ const run = async (): Promise<void> => {
         //tags: tags ? JSON.parse(tags) : "",
       },
     };
+    console.log('payload data to be posted to Asana API', body.data);
     const opts = {};
     const result = await tasksApiInstance.createTask(body, opts);
 
