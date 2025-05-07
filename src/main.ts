@@ -24,7 +24,7 @@ const run = async (): Promise<void> => {
       data: {
         name: taskName,
         approval_status: "pending",
-        assignee_status: "upcoming",
+        //assignee_status: "upcoming",
         completed: false,
         notes: taskDescription,
         is_rendered_as_separator: false,
